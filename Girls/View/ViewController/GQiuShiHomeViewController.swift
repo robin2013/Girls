@@ -31,7 +31,7 @@ class GQiuShiHomeViewController: UIViewController,UITableViewDelegate,UITableVie
                 self.tableView.pullToRefreshView.stopAnimating()
                 }, error: { (error) -> Void in
                    self.tableView.pullToRefreshView.stopAnimating()
-                    self.tableView.showNoNataViewWithMessage(NSLocalizedString(error.userInfo[NSLocalizedDescriptionKey] as! String, comment: ""), imageName: nil)
+                    self.tableView.showNoNataViewWithMessage("无法获取数据", imageName: "icon_feeds_active")
             })
 
         }
@@ -43,7 +43,7 @@ class GQiuShiHomeViewController: UIViewController,UITableViewDelegate,UITableVie
                 self.tableView.infiniteScrollingView.stopAnimating()
                 }, error: { (error) -> Void in
                     self.tableView.infiniteScrollingView.stopAnimating()
-                    self.tableView.showNoNataViewWithMessage(NSLocalizedString(error.userInfo[NSLocalizedDescriptionKey] as! String, comment: ""), imageName: nil)
+                    self.tableView.showNoNataViewWithMessage("无法获取数据", imageName: "icon_feeds_active")
             })
         }
         

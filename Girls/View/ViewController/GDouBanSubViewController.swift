@@ -28,7 +28,7 @@ class GDouBanSubViewController: UIViewController,UICollectionViewDataSource,UICo
                 self.collection.pullToRefreshView.stopAnimating()
                 }, error: { (error) -> Void in
                     self.collection.pullToRefreshView.stopAnimating()
-                    self.collection.showNoNataViewWithMessage(NSLocalizedString(error.userInfo[NSLocalizedDescriptionKey] as! String, comment: ""), imageName: nil)
+                    self.collection.showNoNataViewWithMessage("无法获取数据", imageName: "icon_feeds_active")
             })
             
         }
@@ -40,7 +40,7 @@ class GDouBanSubViewController: UIViewController,UICollectionViewDataSource,UICo
                 self.collection.infiniteScrollingView.stopAnimating()
                 }, error: { (error) -> Void in
                     self.collection.infiniteScrollingView.stopAnimating()
-                    self.collection.showNoNataViewWithMessage(NSLocalizedString(error.userInfo[NSLocalizedDescriptionKey] as! String, comment: ""), imageName: nil)
+                    self.collection.showNoNataViewWithMessage("无法获取数据", imageName: "icon_feeds_active")
             })
         }
         
