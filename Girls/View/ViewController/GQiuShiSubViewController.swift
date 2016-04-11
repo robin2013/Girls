@@ -69,9 +69,11 @@ class GQiuShiSubViewController: UIViewController {
         let content = viewModel?.contentOfRow(indexPath.row)
         let textStyle = NSParagraphStyle.defaultParagraphStyle().mutableCopy() as! NSMutableParagraphStyle
         textStyle.lineSpacing = 12
+        textStyle.alignment = .Justified
+        textStyle.lineBreakMode = .ByCharWrapping
         let height: CGFloat = content!.boundingRectWithSize(CGSizeMake(UIScreen.mainScreen().bounds.width-16, CGFloat.infinity), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFontOfSize(14),NSParagraphStyleAttributeName:textStyle], context: nil).size.height
         
-        let cellheight: CGFloat = height + 8 + 40 + 5 + (viewModel?.imageHeightOfRow(indexPath.row))!+2+7+10
+        let cellheight: CGFloat = height + 8 + 40 + 5 + (viewModel?.imageHeightOfRow(indexPath.row))!+2+7+10+5
         return cellheight;
     }
     
@@ -83,8 +85,10 @@ class GQiuShiSubViewController: UIViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("GQiuBaiTableViewCell") as! GQiuBaiTableViewCell
         let textStyle = NSParagraphStyle.defaultParagraphStyle().mutableCopy() as! NSMutableParagraphStyle
         textStyle.lineSpacing = 12
+        textStyle.alignment = .Justified
+        textStyle.lineBreakMode = .ByCharWrapping
         cell.contentLabel.attributedText = NSAttributedString(string: (viewModel?.contentOfRow(indexPath.row))!, attributes:  [NSFontAttributeName: UIFont.systemFontOfSize(14),NSParagraphStyleAttributeName:textStyle])
-        
+       
         if viewModel?.typeOfRow(indexPath.row) != "word"
         {
             cell.contentImageBtn.kf_setImageWithURL(NSURL(string:(viewModel?.imageUrlOfRow(indexPath.row))!)!,placeholderImage: UIImage.qgocc_imageWithColor(UIColor.lightGrayColor(), size: CGSizeMake(UIScreen.mainScreen().bounds.width - 16.0, (viewModel?.imageHeightOfRow(indexPath.row))!)))
