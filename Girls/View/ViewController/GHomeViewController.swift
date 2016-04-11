@@ -72,7 +72,6 @@ class GHomeViewController: UITabBarController,UINavigationControllerDelegate {
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.navigationBarHidden = true;
     }
     
     override func viewDidAppear(animated: Bool) {

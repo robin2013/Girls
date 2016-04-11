@@ -36,8 +36,6 @@ class GDouBanHomeViewController: UIViewController,QGCollectionMenuDataSource,QGC
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.qgocc_tabBarHidden = false;
-        //self.navigationController!.navigationBar.translucent  = true;
     }
     
     func menumTitles() -> [AnyObject]!

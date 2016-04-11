@@ -8,12 +8,27 @@
 
 import ReactiveViewModel
 import ReactiveCocoa
+enum GQiuBaiType {
+    case lastest
+    case onlyImage
+    case hotest
+}
+
 class GQiuBaiViewModel: RVMViewModel {
     var qiubaiModels :NSMutableArray = []
     var qiubaiModelsSet : NSMutableSet = NSMutableSet(array:[])
     var pageIndex = 1
     
     let pageSize : Int = 30
+    
+    
+    var type:GQiuBaiType = .lastest
+    
+    init?(dataType:GQiuBaiType){
+        super.init()
+        type = dataType
+    }
+    
     override init() {
         super.init()
         self.qiubaiModels = []
@@ -25,7 +40,7 @@ class GQiuBaiViewModel: RVMViewModel {
         {
             pageIndex = 1
         }
-        return GAPIManager.sharedInstance.fetchQiuBaiHot(pageIndex).map({ (result) -> AnyObject! in
+        return GAPIManager.sharedInstance.fetchQiuBai(pageIndex,type: type).map({ (result) -> AnyObject! in
             if !more {
                 self.qiubaiModels.removeAllObjects()
                 self.qiubaiModels.removeAllObjects()

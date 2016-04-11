@@ -67,14 +67,12 @@ class GDoubanDetailViewController: UIViewController,UICollectionViewDelegate,UIC
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBarHidden = true;
-        self.tabBarController?.qgocc_tabBarHidden = true
+
     }
     
     
     override func viewWillDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        self.navigationController?.navigationBarHidden = false;
        
     }
     
