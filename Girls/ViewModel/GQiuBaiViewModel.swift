@@ -9,8 +9,11 @@
 import ReactiveViewModel
 import ReactiveCocoa
 class GQiuBaiViewModel: RVMViewModel {
-    var qiubaiModels :NSMutableArray?
+    var qiubaiModels :NSMutableArray = []
+    var qiubaiModelsSet : NSMutableSet = NSMutableSet(array:[])
+    var pageIndex = 1
     
+    let pageSize : Int = 30
     override init() {
         super.init()
         self.qiubaiModels = []
@@ -18,38 +21,58 @@ class GQiuBaiViewModel: RVMViewModel {
     
     func fetchQiuBaiData(more: Bool)->RACSignal{
         
-        let page = !more ? 1 : ((self.qiubaiModels!.count - self.qiubaiModels!.count%40 )/40+(self.qiubaiModels!.count%40 == 0 ? 1 : 2))
-        //let gifDuration = more  ? 1 : 0
-        
-        return GAPIManager.sharedInstance.fetchQiuBaiHot(page).map({ (result) -> AnyObject! in
+        if !more
+        {
+            pageIndex = 1
+        }
+        return GAPIManager.sharedInstance.fetchQiuBaiHot(pageIndex).map({ (result) -> AnyObject! in
             if !more {
-                self.qiubaiModels?.removeAllObjects()
-                
+                self.qiubaiModels.removeAllObjects()
+                self.qiubaiModels.removeAllObjects()
+                self.qiubaiModelsSet.removeAllObjects()
             }
-            self.qiubaiModels?.addObjectsFromArray(result as! [AnyObject])
+           
+            var addedModel = false
+            for model in result as! NSArray
+            {
+                let src =  model as! GQiuBaiModel
+                if !self.qiubaiModelsSet.containsObject((src.modelId?.stringValue)!)
+                {
+                    self.qiubaiModelsSet.addObject((src.modelId?.stringValue)!)
+                    self.qiubaiModels.addObject(src)
+                    addedModel = true
+                }
+            }
+            
+            if addedModel
+            {
+                self.pageIndex++
+            }
+            NSLog("%d", self.qiubaiModels.count)
+            
             return result
         })
         
     }
     
     func numOfItems()->Int{
-        return (qiubaiModels?.count)!
+        return (qiubaiModels.count)
     }
     
     func contentOfRow(row:Int)->String{
-        let model = qiubaiModels![row] as! GQiuBaiModel
+        let model = qiubaiModels[row] as! GQiuBaiModel
         return model.content!
     }
     
     func typeOfRow(row:Int)->String
     {
-        let model = qiubaiModels![row] as! GQiuBaiModel
+        let model = qiubaiModels[row] as! GQiuBaiModel
         return model.format!
     }
     
     func imageUrlOfRow(row:Int)->String
     {
-        let model = qiubaiModels![row] as! GQiuBaiModel
+        let model = qiubaiModels[row] as! GQiuBaiModel
         if model.format == "image"
         {
             let imageId = model.modelId!.stringValue as NSString
@@ -71,7 +94,7 @@ class GQiuBaiViewModel: RVMViewModel {
     
     func imageHeightOfRow(row:Int)->CGFloat
     {
-        let model = qiubaiModels![row] as! GQiuBaiModel
+        let model = qiubaiModels[row] as! GQiuBaiModel
         if model.format == "image"
         {
             let size = model.imageSize! as NSDictionary
@@ -91,7 +114,7 @@ class GQiuBaiViewModel: RVMViewModel {
     
     func userIcon(row:Int)->String
     {
-        let model = qiubaiModels![row] as! GQiuBaiModel
+        let model = qiubaiModels[row] as! GQiuBaiModel
         if model.user == nil
         {
             return ""
@@ -115,7 +138,7 @@ class GQiuBaiViewModel: RVMViewModel {
     
     func userNickName(row:Int)->String
     {
-        let model = qiubaiModels![row] as! GQiuBaiModel
+        let model = qiubaiModels[row] as! GQiuBaiModel
         let userInfor = model.user! as NSDictionary
         
         return userInfor["login"] as! String
