@@ -41,7 +41,7 @@
                     </constraints>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="de2-tP-RxU">
-                    <rect key="frame" x="8" y="70" width="584" height="521"/>
+                    <rect key="frame" x="8" y="80" width="584" height="511"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -51,7 +51,7 @@
                 <constraint firstAttribute="trailing" secondItem="de2-tP-RxU" secondAttribute="trailing" constant="8" id="DZU-Ok-1xx"/>
                 <constraint firstItem="18k-Jz-id1" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="Eh6-Kl-Hnh"/>
                 <constraint firstItem="18k-Jz-id1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="HrR-v1-usz"/>
-                <constraint firstItem="de2-tP-RxU" firstAttribute="top" secondItem="l6J-Tt-V6C" secondAttribute="bottom" id="JeN-F2-IQB"/>
+                <constraint firstItem="de2-tP-RxU" firstAttribute="top" secondItem="l6J-Tt-V6C" secondAttribute="bottom" constant="10" id="JeN-F2-IQB"/>
                 <constraint firstAttribute="trailing" secondItem="rox-9v-TBN" secondAttribute="trailing" id="JtC-1D-GfA"/>
                 <constraint firstItem="de2-tP-RxU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="Kio-8a-IqK"/>
                 <constraint firstAttribute="trailing" secondItem="ehG-K8-YSo" secondAttribute="trailing" constant="8" id="WFm-Ks-5H4"/>
