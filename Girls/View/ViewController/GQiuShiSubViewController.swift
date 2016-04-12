@@ -87,6 +87,11 @@ class GQiuShiSubViewController: UIViewController {
         textStyle.lineSpacing = 12
         textStyle.alignment = .Justified
         textStyle.lineBreakMode = .ByCharWrapping
+        let content = viewModel?.contentOfRow(indexPath.row)
+        let contentHeight: CGFloat = content!.boundingRectWithSize(CGSizeMake(UIScreen.mainScreen().bounds.width-16, CGFloat.infinity), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFontOfSize(14),NSParagraphStyleAttributeName:textStyle], context: nil).size.height
+        let contentImageHeight = (viewModel?.imageHeightOfRow(indexPath.row))!
+        
+        
         cell.contentLabel.attributedText = NSAttributedString(string: (viewModel?.contentOfRow(indexPath.row))!, attributes:  [NSFontAttributeName: UIFont.systemFontOfSize(14),NSParagraphStyleAttributeName:textStyle])
        
         if viewModel?.typeOfRow(indexPath.row) != "word"
@@ -99,6 +104,9 @@ class GQiuShiSubViewController: UIViewController {
         }
         cell.userIconImageView.layer.cornerRadius = 20
         cell.userIconImageView.clipsToBounds = true
+        
+        cell.contentHeight.constant = contentHeight+5
+        cell.contentImageHeight.constant = contentImageHeight
         if viewModel?.userIcon(indexPath.row) != ""
         {
             cell.userIconImageView.kf_setImageWithURL(NSURL(string:(viewModel?.userIcon(indexPath.row))!)!,placeholderImage: UIImage(named: "icon_main"))

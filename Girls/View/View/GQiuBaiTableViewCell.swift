@@ -14,6 +14,9 @@ class GQiuBaiTableViewCell: UITableViewCell {
     @IBOutlet weak var nickNameLabel: UILabel!
     @IBOutlet weak var userIconImageView: UIImageView!
     @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet weak var contentHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var contentImageHeight: NSLayoutConstraint!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

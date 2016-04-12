@@ -13,6 +13,9 @@
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l6J-Tt-V6C">
                     <rect key="frame" x="8" y="53" width="584" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="17" id="Yrt-u6-TxN"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -42,6 +45,9 @@
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="de2-tP-RxU">
                     <rect key="frame" x="8" y="80" width="584" height="511"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="511" id="T3Y-4L-k6d"/>
+                    </constraints>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -62,8 +68,15 @@
                 <constraint firstItem="ehG-K8-YSo" firstAttribute="leading" secondItem="18k-Jz-id1" secondAttribute="trailing" constant="8" id="tjC-sb-kPe"/>
                 <constraint firstItem="l6J-Tt-V6C" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="xTS-jt-ni1"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="csJ-8f-WMY"/>
+                </mask>
+            </variation>
             <connections>
+                <outlet property="contentHeight" destination="Yrt-u6-TxN" id="QkS-r3-fR8"/>
                 <outlet property="contentImageBtn" destination="de2-tP-RxU" id="jqi-pH-wdg"/>
+                <outlet property="contentImageHeight" destination="T3Y-4L-k6d" id="BZ0-vH-PaZ"/>
                 <outlet property="contentLabel" destination="l6J-Tt-V6C" id="XIc-ng-Kgu"/>
                 <outlet property="nickNameLabel" destination="ehG-K8-YSo" id="Roh-Cu-3uM"/>
                 <outlet property="userIconImageView" destination="18k-Jz-id1" id="LkO-9j-Odg"/>
