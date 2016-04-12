@@ -24,7 +24,7 @@ class GQiuShiHomeViewController: UIViewController,QGCollectionMenuDataSource,QGC
         viewModels.addObject(GQiuBaiViewModel(dataType: .lastest)!)
         viewModels.addObject(GQiuBaiViewModel(dataType: .onlyImage)!)
         viewModels.addObject(GQiuBaiViewModel(dataType: .hotest)!)
-        self.title = "豆瓣美女"
+        self.title = "笑话"
     }
     
     //    override func viewDidLayoutSubviews() {

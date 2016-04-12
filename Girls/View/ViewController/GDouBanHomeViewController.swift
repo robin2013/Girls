@@ -26,7 +26,7 @@ class GDouBanHomeViewController: UIViewController,QGCollectionMenuDataSource,QGC
             
             viewModels.addObject(GGirlsViewModel(dataType: node as! String)!)
         }
-        self.title = "豆瓣美女"
+        self.title = "美女"
     }
     
 //    override func viewDidLayoutSubviews() {
