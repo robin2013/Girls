@@ -47,7 +47,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   QGCollectionMenu:
-    :commit: e3e35751d21406d11ac0edbed577dbbe18c5e261
+    :commit: c5aa3f31664c0d34921bc20306ee312e53429133
     :git: https://github.com/QuanGe/QGCollectionMenu.git
   QGOCCategory:
     :commit: c1317b24b581e37ffc21a980b77d078068aaf97a
