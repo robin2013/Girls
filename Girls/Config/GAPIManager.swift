@@ -89,7 +89,8 @@ class GAPIManager: NSObject {
         }
 
         return fetchData("http://m2.qiushibaike.com/article/list/"+api,type: .GRequestTypeJson,params: ["page":pagenum],header: [:],httpMethod: "get").map({ (result) -> AnyObject! in
-            let items = result["items"] as! [AnyObject]
+        
+             let items = result.objectForKey("items") as! [AnyObject]
             do {
                 return try MTLJSONAdapter.modelsOfClass(GQiuBaiModel.self, fromJSONArray: items)
             } catch {
